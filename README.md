@@ -4,7 +4,7 @@ A simple URL shortening web app built using Flask, featuring malware URL checkin
 
 ## 📸 Screenshot
 
-![URL Shortener Screenshot](https://postimg.cc/DmvSKMwX)
+https://i.postimg.cc/bYbk1XX3/Screenshot-2025-03-17-at-5-43-34-PM.png
 
 ![URL Shortener Screenshot](app/static/screenshot2.png)
 
