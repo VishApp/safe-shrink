@@ -2,6 +2,12 @@
 
 A simple URL shortening web app built using Flask, featuring malware URL checking via VirusTotal API.
 
+## 📸 Screenshot
+
+![URL Shortener Screenshot](app/static/screenshot1.png)
+
+![URL Shortener Screenshot](app/static/screenshot2.png)
+
 ## 🎯 Features
 
 - **Easy URL Shortening:** Convert long URLs into short, shareable links.
