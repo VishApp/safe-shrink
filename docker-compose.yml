@@ -7,3 +7,9 @@ services:
       - "5000:5000"
     env_file:
       - .env
+    restart: always  # Ensures the container restarts if it crashes
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "512M"
