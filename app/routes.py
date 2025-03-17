@@ -55,8 +55,9 @@ def api_shorten():
     if not validators.url(original_url):
         return jsonify({'error': 'Invalid URL'}), 400
 
-    if get_vt_report(original_url, current_app.config['VT_API_KEY']):
-        return jsonify({'error': 'URL detected as malicious', 'malicious': True}), 400
+    vt_result = get_vt_report(original_url, current_app.config['VT_API_KEY'])
+    if vt_result and vt_result['malicious'] > 0:
+        return jsonify({'error': 'URL detected as malicious', 'malicious': True, "vt_result": vt_result}), 400
 
     existing_url = URL.query.filter_by(original_url=original_url).first()
     if existing_url:
@@ -67,4 +68,4 @@ def api_shorten():
         db.session.add(new_url)
         db.session.commit()
 
-    return jsonify({'short_url': request.host_url + short_url, 'malicious': False})
+    return jsonify({'short_url': request.host_url + short_url, 'malicious': False, "vt_result": vt_result})
