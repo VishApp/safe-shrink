@@ -1,6 +1,9 @@
-# Safe Shrink
+# Safe Shrink 
 
-A simple URL shortening web app built using Flask, featuring malware URL checking via VirusTotal API.
+A simple URL shortening web app built using Flask, featuring malware URL checking via VirusTotal API. 
+
+## 🔗 Demo
+Check out the live demo: [Safe Shrink](https://safe-shrink.onrender.com/)
 
 ## 🎯 Features
 
