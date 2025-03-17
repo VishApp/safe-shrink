@@ -1,14 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+/* Animated Gradient Background */
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #232526, #414345);
+    background: linear-gradient(270deg, #1e1e2f, #2a2b3c, #1f2e47, #002244);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     color: #fff;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -168,7 +183,6 @@ h1 {
 }
 
 .malicious {
-    background-color: #e74c3c;
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -179,4 +193,68 @@ h1 {
     color: white;
     padding: 10px;
     border-radius: 5px;
+}
+
+.report {
+    background: #1e1e2f;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.report.malicious {
+    border-color: #ff4c4c;
+}
+
+.report.safe {
+    border-color: #2ecc71;
+}
+
+.report a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: bold;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+}
+
+.report a:hover {
+    text-decoration: underline;
+}
+
+.malicious {
+    color: #ff4c4c;
+    font-weight: bold;
+}
+
+.harmless {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.suspicious {
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+.undetected {
+    color: #cccccc;
+    font-weight: bold;
+}
+
+.total-checks {
+    color: #3498db;
+    font-weight: bold;
+}
+
+.date {
+    color: #ffa500;
+    font-weight: bold;
 }

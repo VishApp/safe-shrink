@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>🚀 URL Shortener</title>
+    <title>Safe Shrink</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -11,20 +11,40 @@
 <div class="container">
     <div class="card">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo"/>
-        <h1>URL Shortener</h1>
+        <h1>Safe Shrink</h1>
         <form method="post">
-            <input type="url" name="url" placeholder="Paste your URL here..." required>
-            <button type="submit">Shorten URL 🚀</button>
+            <input type="url" name="url" placeholder="Paste your URL here..."
+                   value="{{ request.form['url'] if request.form.get('url') else '' }}" required>
+            <button type="submit">Shorten URL</button>
         </form>
 
         {% if vt_result %}
         <div class="report {{ 'malicious' if vt_result.malicious else 'safe' }}">
-            <strong>VirusTotal Report 🔍</strong>
-            {% if vt_result.malicious %}
-            <p>⚠️ Malicious detections: <strong>{{ vt_result.malicious_count }}</strong></p>
-            {% else %}
-            <p>✅ URL is Safe!</p>
-            {% endif %}
+            <h3>🛡️ VirusTotal Report</h3>
+
+            <p><strong>🛑 Malicious Detections:</strong>
+                <span class="malicious">{{ vt_result.malicious }}</span>
+            </p>
+
+            <p><strong>✅ Harmless Reports:</strong>
+                <span class="harmless">{{ vt_result.harmless }}</span>
+            </p>
+
+            <p><strong>⚠️ Suspicious Reports:</strong>
+                <span class="suspicious">{{ vt_result.suspicious }}️</span>
+            </p>
+
+            <p><strong>❓ Undetected:</strong>
+                <span class="undetected">{{ vt_result.undetected }}</span>
+            </p>
+
+            <p><strong>📊 Total Checks:</strong>
+                <span class="total-checks">{{ vt_result.total_checks }}</span>
+            </p>
+
+            <p><strong>🗓️ Last Analysis Date:</strong>
+                <span class="date">{{ vt_result.last_analysis_date }}</span>
+            </p>
         </div>
         {% endif %}
 
