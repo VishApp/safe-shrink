@@ -64,7 +64,8 @@ Make a POST request to `/api/shorten`:
 ```json
 {
   "short_url": "http://localhost:5000/abc123",
-  "malicious": false
+  "malicious": false,
+  "vt_result": {}
 }
 ```
 
@@ -73,7 +74,8 @@ If a URL is detected as malicious:
 ```json
 {
   "error": "URL detected as malicious",
-  "malicious": true
+  "malicious": true,
+  "vt_result": {}
 }
 ```
 
