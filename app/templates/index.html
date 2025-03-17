@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🚀 URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo"/>
+        <h1>URL Shortener</h1>
+        <form method="post">
+            <input type="url" name="url" placeholder="Paste your URL here..." required>
+            <button type="submit">Shorten URL 🚀</button>
+        </form>
+
+        {% if vt_result %}
+        <div class="report {{ 'malicious' if vt_result.malicious else 'safe' }}">
+            <strong>VirusTotal Report 🔍</strong>
+            {% if vt_result.malicious %}
+            <p>⚠️ Malicious detections: <strong>{{ vt_result.malicious_count }}</strong></p>
+            {% else %}
+            <p>✅ URL is Safe!</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if short_url %}
+        <div class="short-url">
+            🎯 Short URL: <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error">❌ {{ error }}</div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    feather.replace()
+</script>
+</body>
+</html>
