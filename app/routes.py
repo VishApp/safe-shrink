@@ -1,15 +1,17 @@
-from flask import render_template, request, redirect, jsonify, current_app
-from . import app, db
+from flask import Blueprint, render_template, request, redirect, jsonify, current_app
 from .models import URL
+from . import db
 from .utils import get_vt_report
 import string, random, validators
+
+main_bp = Blueprint('main', __name__)
 
 
 def generate_short_url():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
 
 
-@app.route('/', methods=['GET', 'POST'])
+@main_bp.route('/', methods=['GET', 'POST'])
 def index():
     vt_result = None
     short_url = None
@@ -39,13 +41,13 @@ def index():
     return render_template('index.html', short_url=short_url, vt_result=vt_result, error=error)
 
 
-@app.route('/<short_url>')
+@main_bp.route('/<short_url>')
 def redirect_url(short_url):
     url = URL.query.filter_by(short_url=short_url).first_or_404()
     return redirect(url.original_url)
 
 
-@app.route('/api/shorten', methods=['POST'])
+@main_bp.route('/api/shorten', methods=['POST'])
 def api_shorten():
     data = request.get_json()
     original_url = data.get('url')

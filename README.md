@@ -57,9 +57,6 @@ flask run
 Make a POST request to `/api/shorten`:
 
 ```json
-POST /api/shorten
-Content-Type: application/json
-
 {
   "url": "https://example.com"
 }

@@ -6,3 +6,4 @@ requests
 python-dotenv
 pybase64
 flask-migrate
+gunicorn
