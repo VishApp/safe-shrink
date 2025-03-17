@@ -1,0 +1,8 @@
+Flask
+SQLAlchemy
+flask_sqlalchemy
+validators
+requests
+python-dotenv
+pybase64
+flask-migrate
